@@ -1191,12 +1191,23 @@ class POEntry(_BaseEntry):
     def fuzzy(self):
         return 'fuzzy' in self.flags
 
+    @property
+    def ai(self):
+        return 'ai' in self.flags
+           
     @fuzzy.setter
     def fuzzy(self, value):
         if value and not self.fuzzy:
             self.flags.insert(0, 'fuzzy')
         elif not value and self.fuzzy:
             self.flags.remove('fuzzy')
+
+    @ai.setter
+    def ai(self, value):
+        if value and not self.ai:
+            self.flags.insert(0, 'ai')
+        elif not value and self.ai:
+            self.flags.remove('ai')
 
     def __hash__(self):
         return hash((self.msgid, self.msgstr))
