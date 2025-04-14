@@ -710,6 +710,12 @@ class POFile(_BaseFile):
         """
         return [e for e in self if e.fuzzy and not e.obsolete]
 
+    def ai_entries(self):
+        """
+        Convenience method that returns the list of fuzzy entries.
+        """
+        return [e for e in self if e.ai and not e.obsolete]
+
     def obsolete_entries(self):
         """
         Convenience method that returns the list of obsolete entries.
